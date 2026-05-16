@@ -22,12 +22,16 @@ jobs:
         include:
           - platform: "macos-latest"
             args: "--target aarch64-apple-darwin"
+            artifact-name: "macos-aarch64"
           - platform: "macos-latest"
             args: "--target x86_64-apple-darwin"
+            artifact-name: "macos-x86_64"
           - platform: "ubuntu-22.04"
             args: ""
+            artifact-name: "linux-x86_64"
           - platform: "windows-latest"
             args: ""
+            artifact-name: "windows-x86_64"
 
     runs-on: ${{ matrix.platform }}
     steps:
@@ -91,7 +95,7 @@ jobs:
       - name: upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.platform }}
+          name: ${{ matrix.artifact-name }}
           path: |
             src-tauri/target/release/bundle/**/*
             src-tauri/target/*/release/bundle/**/*
