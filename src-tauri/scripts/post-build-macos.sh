@@ -5,7 +5,7 @@
 
 set -e
 
-if [[ "$(uname)" != "Darwin" ]]; then
+if [ "$(uname)" != "Darwin" ]; then
     echo "Not macOS, skipping post-build fixes"
     exit 0
 fi
