@@ -54,6 +54,7 @@ const DEFAULT_SKINS: SavedSkin[] = [
     url: "/Skins/PrismaChunk0.png",
     isSlim: false,
   },
+  { id: "amy", name: "Amy", url: "/Skins/amy.png", isSlim: true },
 ];
 
 const SkinsView = memo(function SkinsView() {
@@ -167,7 +168,11 @@ const SkinsView = memo(function SkinsView() {
       }
     } catch (e: unknown) {
       setImportError(
-        e instanceof Error ? e.message : typeof e === "string" ? e : "Failed to fetch",
+        e instanceof Error
+          ? e.message
+          : typeof e === "string"
+            ? e
+            : "Failed to fetch",
       );
     } finally {
       setIsImporting(false);
